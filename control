@@ -1,0 +1,10 @@
+
+Package: com.speakerbuzz.app
+Name: SpeakerBuzz
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Manual speaker pulse generator for iOS.
+Maintainer: SpeakerBuzz Developer
+Author: SpeakerBuzz Developer
+Section: Applications
+Depends: firmware (>= 12.0)

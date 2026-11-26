@@ -1,0 +1,38 @@
+
+name: Build SpeakerBuzz
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-13
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Theos
+        run: |
+          git clone --recursive https://github.com/theos/theos.git $THEOS
+        env:
+          THEOS: ${{ runner.temp }}/theos
+
+      - name: Install build dependencies
+        run: |
+          brew install ldid dpkg
+
+      - name: Build SpeakerBuzz
+        run: |
+          export THEOS=${{ runner.temp }}/theos
+          make package FINALPACKAGE=1
+
+      - name: Upload Debian package
+        uses: actions/upload-artifact@v4
+        with:
+          name: SpeakerBuzz-deb
+          path: packages/*.deb

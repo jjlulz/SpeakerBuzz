@@ -1,15 +1,13 @@
 
-TARGET = iphone:clang:latest:12.2
+TARGET := iphone:clang:latest:12.0
 ARCHS := arm64
 
 include $(THEOS)/makefiles/common.mk
 
-APPLICATION_NAME := SpeakerBuzz
+APPLICATION_NAME = SpeakerBuzz
 
-SpeakerBuzz_FILES := Sources/main.m
-SpeakerBuzz_FRAMEWORKS := UIKit AVFoundation AudioToolbox
-SpeakerBuzz_CFLAGS := -fobjc-arc
-SpeakerBuzz_BUNDLE_ID := com.speakerbuzz.app
-SpeakerBuzz_INSTALL_PATH := /Applications
+SpeakerBuzz_FILES = Sources/main.m
+SpeakerBuzz_FRAMEWORKS = UIKit AVFoundation
+SpeakerBuzz_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/application.mk
